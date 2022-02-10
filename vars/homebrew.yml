@@ -1,0 +1,37 @@
+---
+
+homebrew:
+
+  casks:
+    - authy
+    - docker
+    - epic-games
+    - firefox-developer-edition
+    - flux
+    - font-iosevka
+    - gog-galaxy
+    - iina
+    - iterm2
+    - mpv
+    - signal
+    - spotify
+    - steam
+    - utm
+
+  formulae:
+    - bat
+    - bitwarden-cli
+    - coreutils
+    - git
+    - gnupg
+    - mas
+    - minikube
+    - neovim
+    - ripgrep
+    - stow
+
+  taps:
+    - homebrew/cask
+    - homebrew/cask-fonts
+    - homebrew/cask-versions
+    - homebrew/core

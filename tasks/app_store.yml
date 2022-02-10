@@ -1,0 +1,11 @@
+---
+
+- name: Open App Store
+  ansible.builtin.shell: open "/System/Applications/App Store.app" 
+
+- name: Load mas variables
+  ansible.builtin.include_vars: vars/mas.yml
+
+- name: Install App store apps
+  ansible.builtin.shell: mas install "{{ item }}"
+  loop: "{{ mas }}"

@@ -1,0 +1,6 @@
+---
+
+- name: Install scm_breeze
+  ansible.builtin.git:
+    repo: https://github.com/scmbreeze/scm_breeze.git
+    dest: "$HOME/.scm_breeze"

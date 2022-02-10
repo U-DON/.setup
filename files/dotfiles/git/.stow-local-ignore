@@ -1,0 +1,22 @@
+# https://www.gnu.org/software/stow/manual/stow.html#Types-And-Syntax-Of-Ignore-Lists
+
+# Comments and blank lines are allowed.
+
+RCS
+.+,v
+
+CVS
+\.\#.+       # CVS conflict files / emacs lock files
+\.cvsignore
+
+\.svn
+_darcs
+\.hg
+
+\.git
+
+# Ignore .gitignore to allow it to get stowed.
+# \.gitignore
+
+.+~          # emacs backup files
+\#.*\#       # emacs autosave files

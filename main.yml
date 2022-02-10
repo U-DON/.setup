@@ -1,0 +1,48 @@
+---
+
+- name: Set up all the things
+  hosts: localhost
+  tasks:
+  - name: Execute Homebrew tasks
+    include_tasks:
+      file: tasks/homebrew.yml
+      apply:
+        tags: ['homebrew']
+    when: ansible_distribution == "MacOSX"
+    tags: ['mac', 'homebrew']
+
+  - name: Execute App Store tasks
+    include_tasks:
+      file: tasks/app_store.yml
+      apply:
+        tags: ['app_store']
+    when: ansible_distribution == "MacOSX"
+    tags: ['mac', 'app_store']
+
+  - name: Execute dotfiles tasks
+    include_tasks:
+      file: tasks/dotfiles.yml
+      apply:
+        tags: ['dotfiles']
+    tags: ['dotfiles']
+
+  - name: Execute asdf tasks
+    include_tasks:
+      file: tasks/asdf.yml
+      apply:
+        tags: ['asdf']
+    tags: ['asdf']
+
+  - name: Execute Oh My Zsh tasks
+    include_tasks:
+      file: tasks/oh_my_zsh.yml
+      apply:
+        tags: ['zsh']
+    tags: ['zsh']
+
+  - name: Execute scm_breeze tasks
+    include_tasks:
+      file: tasks/scm_breeze.yml
+      apply:
+        tags: ['scm']
+    tags: ['scm']
