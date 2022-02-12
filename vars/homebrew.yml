@@ -24,8 +24,11 @@ homebrew:
     - coreutils
     - git
     - gnupg
+    - httpie
+    - jq
     - mas
     - minikube
+    - neofetch
     - neovim
     - ripgrep
     - stow
