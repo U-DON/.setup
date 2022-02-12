@@ -108,6 +108,7 @@ alias dc='docker-compose'
 alias rg='rg -S'
 
 export BAT_THEME='ansi-dark'
+export GPG_TTY=$TTY
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
 
