@@ -1,12 +1,12 @@
 ---
 
-- name: Find packages to stow
+- name: Find dotfile packages to stow
   ansible.builtin.find:
     paths: files/dotfiles
     file_type: directory
   register: stow_packages
 
-- name: Stow packages
+- name: Stow dotfiles
   ansible.builtin.shell:
     cmd: stow "{{ item.path | basename }}" --target="$HOME"
     chdir: files/dotfiles

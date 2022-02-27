@@ -7,17 +7,25 @@
     include_tasks:
       file: tasks/homebrew.yml
       apply:
-        tags: ['homebrew']
-    when: ansible_distribution == "MacOSX"
+        tags: ['mac', 'homebrew']
     tags: ['mac', 'homebrew']
+    when: ansible_distribution == "MacOSX"
 
   - name: Execute App Store tasks
     include_tasks:
       file: tasks/app_store.yml
       apply:
-        tags: ['app_store']
-    when: ansible_distribution == "MacOSX"
+        tags: ['mac', 'app_store']
     tags: ['mac', 'app_store']
+    when: ansible_distribution == "MacOSX"
+
+  - name: Execute iTerm tasks
+    include_tasks:
+      file: tasks/iterm.yml
+      apply:
+        tags: ['mac', 'iterm']
+    tags: ['mac', 'iterm']
+    when: ansible_distribution == "MacOSX"
 
   - name: Execute dotfiles tasks
     include_tasks:
