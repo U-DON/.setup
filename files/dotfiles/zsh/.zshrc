@@ -110,7 +110,7 @@ source $ZSH/oh-my-zsh.sh
 alias dc='docker-compose'
 alias rg='rg -S'
 
-export BAT_THEME='ansi-dark'
+export BAT_THEME='OneHalfDark'
 export GPG_TTY=$TTY
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
