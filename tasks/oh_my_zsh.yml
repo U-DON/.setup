@@ -9,11 +9,6 @@
   ansible.builtin.shell: sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   when: oh_my_zsh_installed_check.stat.exists == False
 
-- name: Install Powerlevel10k theme
-  ansible.builtin.git:
-    repo: https://github.com/romkatv/powerlevel10k.git
-    dest: "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
-
 - name: Check for previous .zshrc
   ansible.builtin.stat:
     path: "$HOME/.zshrc.pre-oh-my-zsh"
@@ -22,3 +17,13 @@
 - name: Restore previous .zshrc
   ansible.builtin.shell: mv "{{ previous_zshrc_check.stat.path }}" "$HOME/.zshrc"
   when: previous_zshrc_check.stat.exists == True
+
+- name: Install autosuggestions
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+
+- name: Install Powerlevel10k theme
+  ansible.builtin.git:
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"

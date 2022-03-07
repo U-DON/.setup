@@ -71,6 +71,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   asdf
   git
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -111,6 +112,27 @@ export BAT_THEME='ansi-dark'
 export GPG_TTY=$TTY
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
+
+export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
+  end-of-line
+  vi-end-of-line
+  vi-add-eol
+)
+
+export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
+  forward-char
+  forward-word
+  emacs-forward-word
+  vi-forward-char
+  vi-forward-word
+  vi-forward-word-end
+  vi-forward-blank-word
+  vi-forward-blank-word-end
+  vi-find-next-char
+  vi-find-next-char-skip
+)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
