@@ -8,6 +8,9 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }
 call plug#end()
 
+" Hide line numbers in terminal.
+autocmd TermOpen * setlocal nonu
+
 " ========
 " coc.nvim
 " ========
