@@ -42,9 +42,13 @@ endif
 
 colorscheme onedark
 
+let mapleader = ' '
+
+nnoremap <leader>t :call NewTermTab()<CR>
+nnoremap <leader>tl gt
+nnoremap <leader>th gT
+nnoremap <leader>n :noh<CR>
 inoremap jk <Esc>
-nnoremap <C-t>l gt
-nnoremap <C-t>h gT
 
 let g:netrw_liststyle = 3
 
