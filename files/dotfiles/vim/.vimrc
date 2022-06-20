@@ -19,19 +19,30 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'vim-airline/vim-airline'
+
+if has('nvim')
+  Plug 'akinsho/bufferline.nvim'
+  Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+endif
 call plug#end()
 
 autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 
 " Shorten time to enter escape sequence.
-if ! has('gui_running')
+if !has('gui_running')
   set ttimeoutlen=10
   augroup FastEscape
     autocmd!
     au InsertEnter * set timeoutlen=500
     au InsertLeave * set timeoutlen=500
   augroup END
+endif
+
+if has('nvim')
+  " Hide line numbers in terminal.
+  autocmd TermOpen * setlocal nonu
 endif
 
 colorscheme onedark
@@ -57,6 +68,7 @@ set noshowmode
 set number
 set path+=** " Search recursively into sub-directories.
 set shiftwidth=2
+set showtabline=2
 set smartcase
 set splitbelow
 set splitright
@@ -88,5 +100,74 @@ endfunction
 " vim-airline
 " ===========
 
+let g:airline_powerline_fonts = 1
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 let g:airline_theme = 'onedark'
+
+" ===================
+" << NVIM PLUGIN CONF
+" ===================
+
+if has('nvim')
+
+" ===============
+" bufferline.nvim
+" ===============
+
+lua << EOF
+require('bufferline').setup {
+  options = {
+    mode = 'tabs',
+    numbers = 'ordinal',
+    show_close_icon = true,
+    sort_by = 'tabs',
+  }
+}
+EOF
+
+function! BufferLineSortOnce()
+  if !exists('g:is_bufferline_sorted')
+    BufferLineSortByTabs
+    let g:is_bufferline_sorted = 1
+    echo 'asdfasdf'
+  endif
+endfunction
+
+" Hack to automatically sort buffers in tab mode.
+autocmd TabNew * call BufferLineSortOnce()
+
+" ========
+" coc.nvim
+" ========
+
+let g:coc_global_extensions = [
+\ 'coc-pairs',
+\ 'coc-tsserver',
+\ ]
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocActionAsync('doHover')
+  endif
+endfunction
+
+" ===================
+" >> NVIM PLUGIN CONF
+" ===================
+
+endif
