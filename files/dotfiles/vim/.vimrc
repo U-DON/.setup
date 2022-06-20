@@ -140,7 +140,10 @@ autocmd TabNew * call BufferLineSortOnce()
 " ------------------
 
 lua << EOF
-require('nvim-autopairs').setup {}
+require('nvim-autopairs').setup {
+  map_c_h = true, -- Map the <C-h> key to delete a pair
+  map_c_w = true, -- Map <C-w> to delete a pair if possible
+}
 EOF
 
 " ------------------
