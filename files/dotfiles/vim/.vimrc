@@ -49,6 +49,7 @@ nnoremap <leader>tl gt
 nnoremap <leader>th gT
 nnoremap <leader>n :noh<CR>
 inoremap jk <Esc>
+tnoremap jk <C-\><C-n> " Exit terminal mode.
 
 let g:netrw_liststyle = 3
 
