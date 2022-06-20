@@ -40,11 +40,6 @@ if !has('gui_running')
   augroup END
 endif
 
-if has('nvim')
-  " Hide line numbers in terminal.
-  autocmd TermOpen * setlocal nonu
-endif
-
 colorscheme onedark
 
 inoremap jk <Esc>
@@ -73,46 +68,37 @@ set smartcase
 set splitbelow
 set splitright
 set statusline+='%F' " Show full file path.
-set tabline=%!Tabline()
 set tabstop=2
 set termguicolors
 set t_Co=256
 
-function! Tabline()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    let tab = i + 1
-    let winnr = tabpagewinnr(tab)
-    let buflist = tabpagebuflist(tab)
-    let bufnr = buflist[winnr - 1]
-    let bufname = bufname(bufnr)
-    let bufmodified = getbufvar(bufnr, "&mod")
-    let s .= '%' . tab . 'T' " Start a tab.
-    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " Highlight active tab.
-    let s .= ' [' . tab .'] ' " Tab index.
-    let s .= (bufname != '' ? fnamemodify(bufname, ':t') . ' ' : '[No Name] ') " Tab name.
-    let s .= (bufmodified ? '* ' : '') " Modified buffer.
-  endfor
-  return s
-endfunction
+" ---------------
+" | vim-airline |
+" ---------------
 
-" ===========
-" vim-airline
-" ===========
-
-let g:airline_powerline_fonts = 1
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 let g:airline_theme = 'onedark'
 
 " ===================
-" << NVIM PLUGIN CONF
+" | VIM / NVIM CONF |
 " ===================
 
 if has('nvim')
 
-" ===============
-" bufferline.nvim
-" ===============
+" ================
+" | << NVIM ONLY |
+" ================
+
+function NewTermTab()
+  tabnew | term
+endfunction
+
+" Hide line numbers in terminal.
+autocmd TermOpen * setlocal nonu
+
+" -------------------
+" | bufferline.nvim |
+" -------------------
 
 lua << EOF
 require('bufferline').setup {
@@ -125,20 +111,19 @@ require('bufferline').setup {
 }
 EOF
 
-function! BufferLineSortOnce()
+function BufferLineSortOnce()
   if !exists('g:is_bufferline_sorted')
     BufferLineSortByTabs
     let g:is_bufferline_sorted = 1
-    echo 'asdfasdf'
   endif
 endfunction
 
 " Hack to automatically sort buffers in tab mode.
 autocmd TabNew * call BufferLineSortOnce()
 
-" ========
-" coc.nvim
-" ========
+" ------------
+" | coc.nvim |
+" ------------
 
 let g:coc_global_extensions = [
 \ 'coc-pairs',
@@ -166,8 +151,43 @@ function! s:show_documentation()
   endif
 endfunction
 
-" ===================
-" >> NVIM PLUGIN CONF
-" ===================
+" ================
+" | >> NVIM ONLY |
+" ================
+
+else
+
+" ===============
+" | << VIM ONLY |
+" ===============
+
+function NewTermTab()
+  tab term
+endfunction
+
+" Custom Vim tabline
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let winnr = tabpagewinnr(tab)
+    let buflist = tabpagebuflist(tab)
+    let bufnr = buflist[winnr - 1]
+    let bufname = bufname(bufnr)
+    let bufmodified = getbufvar(bufnr, "&mod")
+    let s .= '%' . tab . 'T' " Start a tab.
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " Highlight active tab.
+    let s .= ' [' . tab .'] ' " Tab index.
+    let s .= (bufname != '' ? fnamemodify(bufname, ':t') . ' ' : '[No Name] ') " Tab name.
+    let s .= (bufmodified ? '* ' : '') " Modified buffer.
+  endfor
+  return s
+endfunction
+
+set tabline=%!Tabline()
+
+" ===============
+" | >> VIM ONLY |
+" ===============
 
 endif
