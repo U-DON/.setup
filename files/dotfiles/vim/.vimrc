@@ -58,6 +58,7 @@ nnoremap <leader>t :call NewTermTab()<CR>
 nnoremap <leader>tl gt
 nnoremap <leader>th gT
 nnoremap <leader>n :noh<CR>
+nnoremap <leader>z za
 inoremap jk <Esc>
 tnoremap jk <C-\><C-n> " Exit terminal mode.
 
@@ -292,6 +293,9 @@ require('nvim-treesitter.configs').setup {
   }
 }
 EOF
+
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 " ================
 " | >> NVIM ONLY |
