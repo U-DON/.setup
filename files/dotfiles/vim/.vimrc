@@ -12,7 +12,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
@@ -31,8 +30,10 @@ if has('nvim')
   Plug 'hrsh7th/vim-vsnip'
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'williamboman/nvim-lsp-installer'
   Plug 'windwp/nvim-autopairs'
+  Plug 'windwp/nvim-ts-autotag'
 endif
 call plug#end()
 
@@ -221,26 +222,6 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
   }),
 
   sources = {
@@ -250,6 +231,66 @@ cmp.setup {
   },
 }
 
+EOF
+
+" ------------------
+" | nvim-lspconfig |
+" ------------------
+
+lua << EOF
+require('nvim-treesitter.configs').setup {
+  -- A list of parser names, or "all"
+  ensure_installed = {
+    'bash',
+    'c',
+    'c_sharp',
+    'cpp',
+    'css',
+    'elixir',
+    'go',
+    'graphql',
+    'hcl',
+    'html',
+    'java',
+    'javascript',
+    'jsdoc',
+    'json',
+    'kotlin',
+    'lua',
+    'make',
+    'php',
+    'python',
+    'r',
+    'ruby',
+    'rust',
+    'scala',
+    'scss',
+    'swift',
+    'tsx',
+    'typescript',
+    'vim',
+    'yaml',
+  },
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+
+  indent = {
+    enable = true,
+  },
+
+  autotag = {
+    enable = true,
+  }
+}
 EOF
 
 " ================
