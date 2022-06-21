@@ -257,9 +257,9 @@ cmp.setup {
 
 EOF
 
-" ------------------
-" | nvim-lspconfig |
-" ------------------
+" -------------------
+" | nvim-treesitter |
+" -------------------
 
 lua << EOF
 require('nvim-treesitter.configs').setup {
@@ -268,11 +268,13 @@ require('nvim-treesitter.configs').setup {
     'bash',
     'c',
     'c_sharp',
+    'cmake',
     'cpp',
     'css',
     'elixir',
     'go',
     'graphql',
+    'haskell',
     'hcl',
     'html',
     'java',
@@ -282,9 +284,12 @@ require('nvim-treesitter.configs').setup {
     'kotlin',
     'lua',
     'make',
+    'markdown',
+    'perl',
     'php',
     'python',
     'r',
+    'regex',
     'ruby',
     'rust',
     'scala',
