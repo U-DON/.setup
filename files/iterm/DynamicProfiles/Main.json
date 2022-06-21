@@ -96,7 +96,7 @@
 
       ],
       "Working Directory" : "\/Users\/eugene",
-      "Blinking Cursor" : false,
+      "Blinking Cursor" : true,
       "Disable Window Resizing" : true,
       "Sync Title" : false,
       "Prompt Before Closing 2" : false,
