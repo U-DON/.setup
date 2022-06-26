@@ -142,5 +142,7 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
+. ~/.asdf/plugins/java/set-java-home.zsh
+
 # Load local configuration.
 [ -s ~/.zshrc.local ] && . ~/.zshrc.local
