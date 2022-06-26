@@ -54,11 +54,13 @@ colorscheme onedark
 
 let mapleader = ' '
 
-nnoremap <leader>t :call NewTermTab()<CR>
-nnoremap <leader>tl gt
-nnoremap <leader>th gT
+nnoremap <leader>tt :call NewTermTab()<CR>
+nnoremap <leader>ts :call NewTermSplit()<CR>
+nnoremap <leader>tv :call NewTermVSplit()<CR>
 nnoremap <leader>n :noh<CR>
 nnoremap <leader>z za
+nnoremap <C-l> gt
+nnoremap <C-h> gT
 inoremap jk <Esc>
 tnoremap jk <C-\><C-n> " Exit terminal mode.
 
@@ -107,6 +109,14 @@ if has('nvim')
 
 function NewTermTab()
   tabnew | term
+endfunction
+
+function NewTermSplit()
+  new | term
+endfunction
+
+function NewTermVSplit()
+  vs | term
 endfunction
 
 " Hide line numbers in terminal.
@@ -339,26 +349,38 @@ function NewTermTab()
   tab term
 endfunction
 
-" Custom Vim tabline
-function! Tabline()
-  let s = ''
-  for i in range(tabpagenr('$'))
-    let tab = i + 1
-    let winnr = tabpagewinnr(tab)
-    let buflist = tabpagebuflist(tab)
-    let bufnr = buflist[winnr - 1]
-    let bufname = bufname(bufnr)
-    let bufmodified = getbufvar(bufnr, "&mod")
-    let s .= '%' . tab . 'T' " Start a tab.
-    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#') " Highlight active tab.
-    let s .= ' [' . tab .'] ' " Tab index.
-    let s .= (bufname != '' ? fnamemodify(bufname, ':t') . ' ' : '[No Name] ') " Tab name.
-    let s .= (bufmodified ? '* ' : '') " Modified buffer.
-  endfor
-  return s
+function NewTermSplit()
+  bel term
 endfunction
 
-set tabline=%!Tabline()
+function NewTermVSplit()
+  vert term
+endfunction
+
+function TabTitleFormatter(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let bufnr = buflist[winnr - 1]
+  let winid = win_getid(winnr, a:n)
+  let title = bufname(bufnr)
+
+  if empty(title)
+    if getqflist({'qfbufnr' : 0}).qfbufnr == bufnr
+      let title = '[Quickfix List]'
+    elseif winid && getloclist(winid, {'qfbufnr' : 0}).qfbufnr == bufnr
+      let title = '[Location List]'
+    else
+      let title = '[No Name]'
+    endif
+  endif
+
+  return title
+endfunction
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_type = 0
+let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
+let g:airline#extensions#tabline#tabtitle_formatter = 'TabTitleFormatter'
 
 " ===============
 " | >> VIM ONLY |
