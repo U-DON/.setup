@@ -29,6 +29,7 @@ if has('nvim')
   Plug 'hrsh7th/nvim-cmp'
   Plug 'hrsh7th/vim-vsnip'
   Plug 'kyazdani42/nvim-web-devicons'
+  Plug 'kyazdani42/nvim-tree.lua'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'williamboman/nvim-lsp-installer'
@@ -54,6 +55,7 @@ colorscheme onedark
 
 let mapleader = ' '
 
+nnoremap <leader><TAB> :NvimTreeFindFileToggle<CR>
 nnoremap <leader>tt :call NewTermTab()<CR>
 nnoremap <leader>ts :call NewTermSplit()<CR>
 nnoremap <leader>tv :call NewTermVSplit()<CR>
@@ -70,6 +72,7 @@ set background=dark
 set backupcopy=yes
 set clipboard=unnamed " Sync register with clipboard.
 set expandtab
+set fileignorecase
 set fillchars=vert:\│ " Connected vertical split characters.
 set foldlevelstart=99 " Start with all folds open.
 set foldmethod=syntax
@@ -131,6 +134,14 @@ require('bufferline').setup {
   options = {
     mode = 'tabs',
     numbers = 'ordinal',
+
+    offsets = {
+      {
+        filetype = 'NvimTree',
+        text_align = 'left'
+      }
+    },
+
     show_close_icon = true,
     sort_by = 'tabs',
   }
@@ -265,6 +276,18 @@ cmp.setup {
   },
 }
 
+EOF
+
+" -------------
+" | nvim-tree |
+" -------------
+
+lua << EOF
+require("nvim-tree").setup {
+  view = {
+    preserve_window_proportions = true,
+  },
+}
 EOF
 
 " -------------------
