@@ -8,4 +8,4 @@
 
 - name: Install App store apps
   ansible.builtin.shell: mas install "{{ item }}"
-  loop: "{{ mas }}"
+  loop: "{{ mas.apps }}"

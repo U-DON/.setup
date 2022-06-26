@@ -1,7 +1,8 @@
 ---
 
 mas:
-- 1099568401  # Home Assistant
-- 1451685025  # WireGuard
-- 1352778147  # Bitwarden
-- 497799835   # Xcode
+  apps:
+    - 1099568401  # Home Assistant
+    - 1451685025  # WireGuard
+    - 1352778147  # Bitwarden
+    - 497799835   # Xcode
