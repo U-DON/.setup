@@ -401,6 +401,7 @@ function TabTitleFormatter(n)
 endfunction
 
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_type = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " Show tab number
 let g:airline#extensions#tabline#tabtitle_formatter = 'TabTitleFormatter'
