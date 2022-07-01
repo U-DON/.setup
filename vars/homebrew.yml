@@ -19,10 +19,14 @@ homebrew:
     - utm
 
   formulae:
+    - ansible
     - bat
     - bitwarden-cli
     - coreutils
+    - fd
+    - fzf
     - git
+    - git-delta
     - gnupg
     - httpie
     - jq
