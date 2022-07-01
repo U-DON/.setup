@@ -4,6 +4,11 @@ set -e
 
 bootstrap_linux() {
   echo "Linux support TBD..."
+
+  # python3 -m venv .venv
+  # . .venv/bin/activate
+  # pip install --upgrade pip ansible
+
   exit 1
 }
 
@@ -14,7 +19,10 @@ bootstrap_mac() {
   /usr/sbin/softwareupdate --install-rosetta
 
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
   eval "$(/opt/homebrew/bin/brew shellenv)"
+
+  brew install ansible
 }
 
 bootstrap_unsupported() {
@@ -27,9 +35,5 @@ case "$(uname -s)" in
   Darwin)  bootstrap_mac ;;
        *)  bootstrap_unsupported ;;
 esac
-
-python3 -m venv .venv
-. .venv/bin/activate
-pip install --upgrade pip ansible
 
 ansible-playbook -vvvv main.yml
