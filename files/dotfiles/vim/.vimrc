@@ -89,6 +89,7 @@ set mouse=a
 set noshowmode
 set number
 set path+=** " Search recursively into sub-directories.
+set shell=zsh
 set shiftwidth=2
 set showtabline=2
 set smartcase
@@ -271,7 +272,6 @@ cmp.setup {
 
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
     },
   }),
 
