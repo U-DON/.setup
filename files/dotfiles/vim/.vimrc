@@ -55,6 +55,10 @@ colorscheme onedark
 
 let mapleader = ' '
 
+cnoremap <C-A> <Home>
+cnoremap <C-B> <Left>
+cnoremap <C-F> <Right>
+
 nnoremap <leader><TAB> :NvimTreeFindFileToggle<CR>
 nnoremap <leader>tt :call NewTermTab()<CR>
 nnoremap <leader>ts :call NewTermSplit()<CR>
@@ -63,7 +67,9 @@ nnoremap <leader>n :noh<CR>
 nnoremap <leader>z za
 nnoremap <C-l> gt
 nnoremap <C-h> gT
+
 inoremap jk <Esc>
+
 tnoremap <C-j><C-k> <C-\><C-n> " Exit terminal mode.
 
 let g:netrw_liststyle = 3

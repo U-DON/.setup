@@ -71,8 +71,11 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   asdf
   docker
+  fd
+  fzf
   git
   kubectl
+  ripgrep
   zsh-autosuggestions
 )
 
@@ -137,8 +140,6 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
 
