@@ -2,7 +2,7 @@
 
 - name: Check if Oh My Zsh is installed
   ansible.builtin.stat:
-    path: "$HOME/.oh-my-zsh"
+    path: ~/.oh-my-zsh
   register: oh_my_zsh_dir
 
 - name: Install Oh My Zsh
@@ -11,7 +11,7 @@
 
 - name: Check for previous .zshrc
   ansible.builtin.stat:
-    path: "$HOME/.zshrc.pre-oh-my-zsh"
+    path: ~/.zshrc.pre-oh-my-zsh
   register: previous_zshrc
 
 - name: Restore previous .zshrc
@@ -21,9 +21,9 @@
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 
 - name: Install Powerlevel10k theme
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
-    dest: "$HOME/.oh-my-zsh/custom/themes/powerlevel10k"
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k

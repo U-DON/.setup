@@ -3,14 +3,14 @@
 - name: Install asdf
   ansible.builtin.git:
     repo: https://github.com/asdf-vm/asdf.git
-    dest: "$HOME/.asdf"
+    dest: ~/.asdf
 
 - name: Load asdf variables
   ansible.builtin.include_vars: vars/asdf.yml
 
 - name: Install asdf plugins
   ansible.builtin.shell: |
-    . "$HOME/.asdf/asdf.sh"
+    . ~/.asdf/asdf.sh
     asdf plugin add "{{ item.name }}"
     asdf install "{{ item.name }}" "{{ item.version }}"
     asdf global "{{ item.name }}" "{{ item.version }}"
