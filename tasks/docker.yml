@@ -1,0 +1,39 @@
+---
+
+- name: Make Docker plugins directory
+  ansible.builtin.file:
+    state: directory
+    path: ~/.docker/cli-plugins
+
+- name: Set Docker Compose as a Docker plugin
+  ansible.builtin.file:
+    state: link
+    src: "{{ brew_prefix.stdout }}/opt/docker-compose/bin/docker-compose"
+    dest: ~/.docker/cli-plugins/docker-compose
+
+- name: Check if Docker config exists
+  ansible.builtin.stat:
+    path: ~/.docker/config.json
+  register: docker_config
+
+- name: Create Docker config
+  ansible.builtin.copy:
+    content: "{}"
+    dest: ~/.docker/config.json
+  when: docker_config.stat.exists == False
+
+- name: Load Docker config
+  ansible.builtin.include_vars:
+    file: ~/.docker/config.json
+    name: docker_config_content
+
+- name: Set Docker detach keys
+  ansible.builtin.copy:
+    content: >-
+      {{
+          docker_config_content
+          | default({})
+          | combine({ 'detachKeys': 'ctrl-_,ctrl-[' })
+          | to_nice_json(indent=2)
+      }}
+    dest: ~/.docker/config.json

@@ -7,8 +7,8 @@
     include_tasks:
       file: tasks/homebrew.yml
       apply:
-        tags: ['mac', 'homebrew']
-    tags: ['mac', 'homebrew']
+        tags: ['mac', 'homebrew', 'brew']
+    tags: ['mac', 'homebrew', 'brew']
     when: ansible_distribution == "MacOSX"
 
   - name: Execute App Store tasks
@@ -54,3 +54,10 @@
       apply:
         tags: ['scm']
     tags: ['scm']
+
+  - name: Execute Docker tasks
+    include_tasks:
+      file: tasks/docker.yml
+      apply:
+        tags: ['docker']
+    tags: ['docker']
