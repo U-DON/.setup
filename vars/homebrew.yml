@@ -1,10 +1,8 @@
 ---
 
 homebrew:
-
   casks:
     - authy
-    - docker
     - epic-games
     - firefox-developer-edition
     - flux
@@ -22,7 +20,10 @@ homebrew:
     - ansible
     - bat
     - bitwarden-cli
+    - colima
     - coreutils
+    - docker
+    - docker-compose
     - fd
     - fzf
     - git
