@@ -15,7 +15,7 @@
   register: previous_zshrc
 
 - name: Restore previous .zshrc
-  ansible.builtin.shell: mv "{{ previous_zshrc_check.stat.path }}" "$HOME/.zshrc"
+  ansible.builtin.shell: "mv {{ previous_zshrc.stat.path }} ~/.zshrc"
   when: previous_zshrc.stat.exists == True
 
 - name: Install autosuggestions
