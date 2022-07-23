@@ -4,60 +4,36 @@
   hosts: localhost
   tasks:
   - name: Execute Homebrew tasks
-    include_tasks:
-      file: tasks/homebrew.yml
-      apply:
-        tags: ['mac', 'homebrew', 'brew']
+    import_tasks: tasks/homebrew.yml
     tags: ['mac', 'homebrew', 'brew']
     when: ansible_distribution == "MacOSX"
 
   - name: Execute App Store tasks
-    include_tasks:
-      file: tasks/app_store.yml
-      apply:
-        tags: ['mac', 'app_store']
+    import_tasks: tasks/app_store.yml
     tags: ['mac', 'app_store']
     when: ansible_distribution == "MacOSX"
 
   - name: Execute iTerm tasks
-    include_tasks:
-      file: tasks/iterm.yml
-      apply:
-        tags: ['mac', 'iterm']
+    import_tasks: tasks/iterm.yml
     tags: ['mac', 'iterm']
     when: ansible_distribution == "MacOSX"
 
   - name: Execute dotfiles tasks
-    include_tasks:
-      file: tasks/dotfiles.yml
-      apply:
-        tags: ['dotfiles']
+    import_tasks: tasks/dotfiles.yml
     tags: ['dotfiles']
 
   - name: Execute asdf tasks
-    include_tasks:
-      file: tasks/asdf.yml
-      apply:
-        tags: ['asdf']
+    import_tasks: tasks/asdf.yml
     tags: ['asdf']
 
   - name: Execute Oh My Zsh tasks
-    include_tasks:
-      file: tasks/oh_my_zsh.yml
-      apply:
-        tags: ['zsh']
+    import_tasks: tasks/oh_my_zsh.yml
     tags: ['zsh']
 
   - name: Execute scm_breeze tasks
-    include_tasks:
-      file: tasks/scm_breeze.yml
-      apply:
-        tags: ['scm']
+    import_tasks: tasks/scm_breeze.yml
     tags: ['scm']
 
   - name: Execute Docker tasks
-    include_tasks:
-      file: tasks/docker.yml
-      apply:
-        tags: ['docker']
+    import_tasks: tasks/docker.yml
     tags: ['docker']
