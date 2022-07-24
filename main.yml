@@ -1,26 +1,18 @@
 ---
 
 - name: Set up all the things
+
   hosts: localhost
+
   vars_files:
     - vars/asdf.yml
     - vars/homebrew.yml
     - vars/mas.yml
 
   tasks:
-    - name: Execute Homebrew tasks
-      import_tasks: tasks/homebrew.yml
-      tags: ['mac', 'homebrew', 'brew']
-      when: ansible_distribution == "MacOSX"
-
-    - name: Execute App Store tasks
-      import_tasks: tasks/app_store.yml
-      tags: ['mac', 'app_store']
-      when: ansible_distribution == "MacOSX"
-
-    - name: Execute iTerm tasks
-      import_tasks: tasks/iterm.yml
-      tags: ['mac', 'iterm']
+    - name: Execute Mac OS tasks
+      import_tasks: tasks/mac.yml
+      tags: ['macos', 'mac']
       when: ansible_distribution == "MacOSX"
 
     - name: Execute dotfiles tasks
