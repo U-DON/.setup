@@ -99,7 +99,7 @@ alias rg='rg -S'
 export BAT_THEME='OneHalfDark'
 export GPG_TTY=$TTY
 export VISUAL='nvim'
-export EDITOR="$VISUAL"
+export EDITOR=$VISUAL
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
 
@@ -122,12 +122,12 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
   vi-find-next-char-skip
 )
 
+# Load local configuration.
+[ -s ~/.zshrc.local ] && . ~/.zshrc.local
+
+. ~/.asdf/plugins/java/set-java-home.zsh
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
-
-. ~/.asdf/plugins/java/set-java-home.zsh
-
-# Load local configuration.
-[ -s ~/.zshrc.local ] && . ~/.zshrc.local
