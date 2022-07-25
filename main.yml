@@ -19,13 +19,13 @@
       import_tasks: tasks/dotfiles.yml
       tags: ['dotfiles']
 
+    - name: Execute Zsh tasks
+      import_tasks: tasks/zsh.yml
+      tags: ['zsh']
+
     - name: Execute asdf tasks
       import_tasks: tasks/asdf.yml
       tags: ['asdf']
-
-    - name: Execute Oh My Zsh tasks
-      import_tasks: tasks/oh_my_zsh.yml
-      tags: ['zsh']
 
     - name: Execute scm_breeze tasks
       import_tasks: tasks/scm_breeze.yml

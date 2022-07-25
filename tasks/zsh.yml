@@ -21,9 +21,14 @@
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+    dest: "{{ oh_my_zsh_dir.stat.path }}/custom/plugins/zsh-autosuggestions"
+
+- name: Install syntax highlighting
+  ansible.builtin.git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "{{ oh_my_zsh_dir.stat.path }}/custom/plugins/zsh-syntax-highlighting"
 
 - name: Install Powerlevel10k theme
   ansible.builtin.git:
     repo: https://github.com/romkatv/powerlevel10k.git
-    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k
+    dest: "{{ oh_my_zsh_dir.stat.path }}/custom/themes/powerlevel10k"
