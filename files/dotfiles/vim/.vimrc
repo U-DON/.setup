@@ -96,6 +96,7 @@ set smartcase
 set splitbelow
 set splitright
 set statusline+='%F' " Show full file path.
+set switchbuf=usetab,split
 set tabstop=2
 set termguicolors
 set t_Co=256
