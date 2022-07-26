@@ -18,6 +18,11 @@
   ansible.builtin.shell: "mv {{ previous_zshrc.stat.path }} ~/.zshrc"
   when: previous_zshrc.stat.exists == True
 
+- name: Confirm that Oh My Zsh is installed
+  ansible.builtin.stat:
+    path: ~/.oh-my-zsh
+  register: oh_my_zsh_dir
+
 - name: Install autosuggestions
   ansible.builtin.git:
     repo: https://github.com/zsh-users/zsh-autosuggestions.git
