@@ -74,7 +74,6 @@ tnoremap <C-j><C-k> <C-\><C-n> " Exit terminal mode.
 
 let g:netrw_liststyle = 3
 
-set autochdir
 set background=dark
 set backupcopy=yes
 set clipboard=unnamed " Sync register with clipboard.
