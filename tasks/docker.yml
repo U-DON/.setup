@@ -10,6 +10,7 @@
     state: link
     src: "{{ brew_prefix.stdout }}/opt/docker-compose/bin/docker-compose"
     dest: ~/.docker/cli-plugins/docker-compose
+  when: ansible_distribution == "MacOSX"
 
 - name: Check if Docker config exists
   ansible.builtin.stat:
