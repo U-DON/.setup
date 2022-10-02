@@ -58,7 +58,9 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
 # Load local configuration.
 [ -s ~/.zshrc.local ] && . ~/.zshrc.local
 
-. ~/.asdf/plugins/java/set-java-home.zsh
+[ -s ~/.asdf/plugins/dotnet/set-dotnet-env.zsh ] && . ~/.asdf/plugins/dotnet/set-dotnet-env.zsh
+
+[ -s ~/.asdf/plugins/java/set-java-home.zsh ] && . ~/.asdf/plugins/java/set-java-home.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
