@@ -35,6 +35,7 @@ homebrew:
     - jq
     - mas
     - minikube
+    - mosh
     - neofetch
     - neovim
     - ripgrep
