@@ -10,6 +10,7 @@ homebrew:
     - gog-galaxy
     - iina
     - iterm2
+    - kitty
     - mpv
     - signal
     - spotify
