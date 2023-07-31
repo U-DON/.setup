@@ -31,8 +31,9 @@ if has('nvim')
   Plug 'kyazdani42/nvim-web-devicons'
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'williamboman/nvim-lsp-installer'
+  Plug 'nvim-treesitter/nvim-treesitter', { 'do': ':TSUpdate' }
+  Plug 'williamboman/mason.nvim', { 'do': ':MasonUpdate' }
+  Plug 'williamboman/mason-lspconfig.nvim'
   Plug 'windwp/nvim-autopairs'
   Plug 'windwp/nvim-ts-autotag'
 endif
@@ -185,8 +186,10 @@ set completeopt=menu,menuone,noselect
 
 lua << EOF
 
-require('nvim-lsp-installer').setup {
-  automatic_installation = true,
+require('mason').setup()
+
+require('mason-lspconfig').setup {
+  automatic_installation = true
 }
 
 -- Mappings.
@@ -196,6 +199,11 @@ local opts = { noremap=true, silent=true }
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
+
+-- Don't show inline diagnostics.
+vim.diagnostic.config({ virtual_text = false })
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false, scope="cursor"})]]
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -219,9 +227,7 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
   vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 
-  -- Only show line diagnostics automatically in hover window.
-  vim.diagnostic.config({ virtual_text = false })
-  vim.o.updatetime = 250
+  -- Show line diagnostics automatically in hover window.
   vim.api.nvim_create_autocmd("CursorHold", {
     buffer = bufnr,
     callback = function()
@@ -235,18 +241,19 @@ local on_attach = function(client, bufnr)
   })
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local lspconfig = require('lspconfig')
 
 local servers = {
-  'html',       -- HTML
-  'jdtls',      -- Java
-  'omnisharp',  -- C#
-  'pyright',    -- Python
-  'solargraph', -- Ruby
-  'tsserver'    -- JavaScript / TypeScript
+  'html',                   -- HTML
+  'jdtls',                  -- Java
+  'jsonls',                 -- JSON
+  'kotlin_language_server', -- Kotlin
+  'omnisharp',              -- C#
+  'pyright',                -- Python
+  'solargraph',             -- Ruby
+  'tsserver'                -- JavaScript / TypeScript
 }
 
 for _, lsp in ipairs(servers) do
@@ -256,13 +263,25 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+-- lspconfig.kotlin_language_server.setup {
+--   settings = {
+--     kotlin = {
+--       compiler = {
+--         jvm = {
+--           target = '17'
+--         }
+--       }
+--     }
+--   }
+-- }
+
 local cmp = require('cmp')
 
 cmp.setup {
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
+      vim.fn['vsnip#anonymous'](args.body)
     end,
   },
 
@@ -290,10 +309,10 @@ EOF
 " -------------
 
 lua << EOF
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup {
-  view = {
-    preserve_window_proportions = true,
-  },
+  view = { preserve_window_proportions = true },
 }
 EOF
 
@@ -334,7 +353,7 @@ require('nvim-treesitter.configs').setup {
     'rust',
     'scala',
     'scss',
-    'swift',
+    -- 'swift',
     'tsx',
     'typescript',
     'vim',
