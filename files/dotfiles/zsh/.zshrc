@@ -25,6 +25,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+alias bat='batcat'
+alias fd='fdfind'
 alias rg='rg -S'
 
 export BAT_THEME='OneHalfDark'

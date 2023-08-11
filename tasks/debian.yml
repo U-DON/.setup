@@ -3,3 +3,7 @@
 - name: Execute apt tasks
   import_tasks: apt.yml
   tags: ['apt']
+
+- name: Install Neovim
+  import_tasks: neovim.yml
+  tags: ['neovim', 'nvim']
