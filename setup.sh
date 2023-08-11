@@ -5,11 +5,10 @@ set -e
 bootstrap_linux() {
   echo "Linux support TBD..."
 
-  # python3 -m venv .venv
-  # . .venv/bin/activate
-  # pip install --upgrade pip ansible
-
-  exit 1
+  sudo apt update
+  sudo apt install software-properties-common
+  sudo add-apt-repository --yes --update ppa:ansible/ansible
+  sudo apt install ansible
 }
 
 bootstrap_mac() {

@@ -1,0 +1,14 @@
+---
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install apt packages
+  ansible.builtin.apt:
+    pkg: "{{ apt.packages }}"
+
+- name: Clean and remove dependencies
+  ansible.builtin.apt:
+    autoclean: yes
+    autoremove: yes

@@ -1,0 +1,23 @@
+---
+
+apt:
+  packages:
+    - ansible
+    - bat
+    - colima
+    - coreutils
+    - direnv
+    - docker
+    - docker-compose
+    - fd
+    - fzf
+    - git
+    - git-delta
+    - gnupg
+    - httpie
+    - jq
+    - mosh
+    - neofetch
+    - neovim
+    - ripgrep
+    - stow

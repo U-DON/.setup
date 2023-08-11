@@ -5,12 +5,12 @@
     repo: https://github.com/asdf-vm/asdf.git
     dest: ~/.asdf
 
-- name: Install asdf plugins
-  ansible.builtin.shell: |
-    . ~/.asdf/asdf.sh
-    asdf plugin add "{{ item.name }}"
-    asdf install "{{ item.name }}" "{{ item.version }}"
-    asdf global "{{ item.name }}" "{{ item.version }}"
-  args:
-    executable: /bin/zsh
-  loop: "{{ asdf.plugins }}"
+# - name: Install asdf plugins
+#   ansible.builtin.shell: |
+#     . ~/.asdf/asdf.sh
+#     asdf plugin add "{{ item.name }}"
+#     asdf install "{{ item.name }}" "{{ item.version }}"
+#     asdf global "{{ item.name }}" "{{ item.version }}"
+#   args:
+#     executable: /bin/zsh
+#   loop: "{{ asdf.plugins }}"

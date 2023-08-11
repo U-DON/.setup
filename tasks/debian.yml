@@ -1,0 +1,5 @@
+---
+
+- name: Execute apt tasks
+  import_tasks: apt.yml
+  tags: ['apt']
