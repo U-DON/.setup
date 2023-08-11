@@ -1,11 +1,8 @@
 [user]
-	email = 1067024+U-DON@users.noreply.github.com
+	email = edoan@panalgo.com
 	name = Eugene Doan
-	signingkey = BE1BFE40E1AC5B19
 [core]
 	excludesfile = ~/.gitignore
-[commit]
-	gpgsign = true
 [init]
 	defaultBranch = main
 [pull]
