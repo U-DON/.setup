@@ -1,12 +1,14 @@
 ---
 
-- name: Update apt cache
+- name: Update cache and install apt packages
   ansible.builtin.apt:
+    name: "{{ apt.packages }}"
     update_cache: yes
 
-- name: Install apt packages
+- name: Update all packages to latest
   ansible.builtin.apt:
-    pkg: "{{ apt.packages }}"
+    name: "*"
+    state: latest
 
 - name: Clean and remove dependencies
   ansible.builtin.apt:
