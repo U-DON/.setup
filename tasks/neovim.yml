@@ -5,7 +5,7 @@
     src: https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
     dest: /opt
     remote_src: yes
-    register: download
+  register: download
 
 - name: Add Neovim to path
   ansible.builtin.file:
