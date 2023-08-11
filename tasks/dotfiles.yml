@@ -16,6 +16,7 @@
   ansible.builtin.git:
     repo: https://git.bhei.com/edoan/devcontainer-bootstrap.git
     dest: "{{ playbook_dir }}"
+    force: true
 
 - name: Restow dotfiles
   ansible.builtin.shell:
