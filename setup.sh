@@ -3,12 +3,15 @@
 set -e
 
 bootstrap_linux() {
-  echo "Linux support TBD..."
+  echo "Setting up bootstrap for Linux machine..."
+  echo "Installing Ansible..."
 
   sudo apt update
   sudo apt install --yes software-properties-common
   sudo add-apt-repository --yes --update ppa:ansible/ansible
-  sudo apt install ansible
+  sudo apt install --yes ansible
+
+  echo "Installed Ansible!"
 }
 
 bootstrap_mac() {
