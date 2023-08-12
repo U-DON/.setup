@@ -1,6 +1,7 @@
 ---
 
 - name: Download and unarchive Neovim
+  become: true
   ansible.builtin.unarchive:
     src: https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
     dest: /opt
@@ -8,6 +9,7 @@
   register: download
 
 - name: Add Neovim to path
+  become: true
   ansible.builtin.file:
     state: link
     src: "{{ download.dest }}/nvim-linux64/bin/nvim"

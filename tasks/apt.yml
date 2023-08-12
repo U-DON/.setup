@@ -1,20 +1,24 @@
 ---
 
 - name: Update cache and install apt packages
+  become: true
   ansible.builtin.apt:
     name: "{{ apt.packages }}"
     update_cache: yes
 
 - name: Install delta (git-delta)
+  become: true
   ansible.builtin.apt:
     deb: https://github.com/dandavison/delta/releases/download/0.16.5/git-delta_0.16.5_amd64.deb
 
 - name: Update all packages to latest
+  become: true
   ansible.builtin.apt:
     name: "*"
     state: latest
 
 - name: Clean and remove dependencies
+  become: true
   ansible.builtin.apt:
     autoclean: yes
     autoremove: yes
