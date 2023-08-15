@@ -16,4 +16,4 @@
     dest: /usr/local/bin/nvim
 
 - name: Install Neovim plugins
-  ansible.builtin.shell: nvim --headless +PlugInstall +qall
+  ansible.builtin.shell: nvim --headless +PlugInstall +qa
