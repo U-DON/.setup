@@ -1,6 +1,6 @@
 ---
 
-- name: Download and unarchive Neovim
+- name: Download Neovim
   become: true
   ansible.builtin.unarchive:
     src: https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
@@ -16,4 +16,4 @@
     dest: /usr/local/bin/nvim
 
 - name: Install Neovim plugins
-  ansible.builtin.shell: nvim --headless +PlugInstall +qa
+  ansible.builtin.shell: nvim --headless +PlugUpdate +qa

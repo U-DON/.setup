@@ -21,6 +21,11 @@
       import_tasks: tasks/zsh.yml
       tags: ['zsh']
 
+    - name: Execute Neovim tasks
+      import_tasks: neovim.yml
+      tags: ['neovim', 'nvim']
+      when: ansible_facts['os_family'] == "Debian"
+
     - name: Execute asdf tasks
       import_tasks: tasks/asdf.yml
       tags: ['asdf']
