@@ -22,7 +22,7 @@
       tags: ['zsh']
 
     - name: Execute Neovim tasks
-      import_tasks: neovim.yml
+      import_tasks: tasks/neovim.yml
       tags: ['neovim', 'nvim']
       when: ansible_facts['os_family'] == "Debian"
 
