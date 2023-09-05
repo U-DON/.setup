@@ -246,6 +246,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 local servers = {
+  'eslint',                 -- ESLint
   'html',                   -- HTML
   'jdtls',                  -- Java
   'jsonls',                 -- JSON
