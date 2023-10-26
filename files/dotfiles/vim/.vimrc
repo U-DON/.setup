@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
+Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
@@ -108,6 +109,12 @@ set t_Co=256
 
 let g:airline_section_c = '%<%F%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
 let g:airline_theme = 'onedark'
+
+" ----------------
+" | fugitive.vim |
+" ----------------
+
+let g:fugitive_gitlab_domains = ['https://git.bhei.com']
 
 " ===================
 " | VIM / NVIM CONF |
@@ -310,7 +317,8 @@ EOF
 " -------------
 
 lua << EOF
-vim.g.loaded_netrw = 1
+-- Enable autoloading for GBrowse to work.
+-- vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 require("nvim-tree").setup {
   view = { preserve_window_proportions = true },
