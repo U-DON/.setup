@@ -3,6 +3,7 @@
 apt:
   packages:
     - bat
+    - build-essential
     - direnv
     - fd-find
     - httpie
