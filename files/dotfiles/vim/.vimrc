@@ -261,6 +261,8 @@ local servers = {
   'omnisharp',              -- C#
   'pyright',                -- Python
   'solargraph',             -- Ruby
+  'terraformls',            -- Terraform
+  'tflint',                 -- tflint
   'tsserver'                -- JavaScript / TypeScript
 }
 
