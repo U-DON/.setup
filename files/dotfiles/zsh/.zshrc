@@ -33,6 +33,7 @@ export BAT_THEME='OneHalfDark'
 export GPG_TTY=$TTY
 export VISUAL='nvim'
 export EDITOR=$VISUAL
+export SCM_BREEZE_DISABLE_ASSETS_MANAGEMENT=true
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
 
