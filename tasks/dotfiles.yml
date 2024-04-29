@@ -13,10 +13,13 @@
   loop: "{{ stow_packages.files }}"
 
 - name: Revert any adopted dotfiles
-  ansible.builtin.git:
-    repo: https://git.bhei.com/edoan/devcontainer-bootstrap.git
-    dest: "{{ playbook_dir }}"
-    force: true
+  ansible.builtin.shell: git checkout .
+
+# - name: Revert any adopted dotfiles
+#   ansible.builtin.git:
+#     repo: https://git.bhei.com/edoan/devcontainer-bootstrap.git
+#     dest: "{{ playbook_dir }}"
+#     force: true
 
 - name: Restow dotfiles
   ansible.builtin.shell:
