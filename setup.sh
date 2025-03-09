@@ -3,13 +3,15 @@
 set -e
 
 bootstrap_linux() {
-  echo "Linux support TBD..."
+  echo "Setting up bootstrap for Linux machine..."
+  echo "Installing Ansible..."
 
-  # python3 -m venv .venv
-  # . .venv/bin/activate
-  # pip install --upgrade pip ansible
+  sudo apt update
+  sudo apt install --yes software-properties-common
+  sudo add-apt-repository --yes --update ppa:ansible/ansible
+  sudo apt install --yes ansible
 
-  exit 1
+  echo "Installed Ansible!"
 }
 
 bootstrap_mac() {

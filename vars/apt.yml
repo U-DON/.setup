@@ -1,0 +1,11 @@
+---
+
+apt:
+  packages:
+    - bat
+    - build-essential
+    - direnv
+    - fd-find
+    - httpie
+    - ripgrep
+    - stow

@@ -1,0 +1,6 @@
+---
+
+nvim:
+  builds:
+    aarch64: nvim-linux-arm64
+    x86_64: nvim-linux-x86_64

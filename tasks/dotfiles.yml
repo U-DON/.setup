@@ -8,6 +8,15 @@
 
 - name: Stow dotfiles
   ansible.builtin.shell:
-    cmd: stow "{{ item.path | basename }}" --target="$HOME"
+    cmd: stow --adopt "{{ item.path | basename }}" --target="$HOME"
+    chdir: files/dotfiles
+  loop: "{{ stow_packages.files }}"
+
+- name: Revert any adopted dotfiles
+  ansible.builtin.shell: git checkout .
+
+- name: Restow dotfiles
+  ansible.builtin.shell:
+    cmd: stow --restow "{{ item.path | basename }}" --target="$HOME"
     chdir: files/dotfiles
   loop: "{{ stow_packages.files }}"

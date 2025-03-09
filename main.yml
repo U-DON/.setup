@@ -4,14 +4,14 @@
 
   hosts: localhost
 
-  vars_files:
-    - vars/asdf.yml
-    - vars/homebrew.yml
-    - vars/mas.yml
-
   tasks:
-    - name: Execute Mac OS tasks
-      import_tasks: tasks/mac.yml
+    - name: Execute Debian tasks
+      import_tasks: tasks/debian.yml
+      tags: ['debian', 'ubuntu']
+      when: ansible_facts['os_family'] == "Debian"
+
+    - name: Execute macOS tasks
+      import_tasks: tasks/macos.yml
       tags: ['macos', 'mac']
       when: ansible_distribution == "MacOSX"
 
@@ -23,6 +23,11 @@
       import_tasks: tasks/zsh.yml
       tags: ['zsh']
 
+    - name: Execute Neovim tasks
+      import_tasks: tasks/neovim.yml
+      tags: ['neovim', 'nvim']
+      when: ansible_facts['os_family'] == "Debian"
+
     - name: Execute asdf tasks
       import_tasks: tasks/asdf.yml
       tags: ['asdf']
@@ -31,6 +36,6 @@
       import_tasks: tasks/scm_breeze.yml
       tags: ['scm']
 
-    - name: Execute Docker tasks
-      import_tasks: tasks/docker.yml
-      tags: ['docker']
+    # - name: Execute Docker tasks
+    #   import_tasks: tasks/docker.yml
+    #   tags: ['docker']

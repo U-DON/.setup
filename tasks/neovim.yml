@@ -1,0 +1,26 @@
+---
+
+- name: Include Neovim variables
+  ansible.builtin.include_vars: vars/neovim.yml
+
+- name: Set Neovim build
+  ansible.builtin.set_fact:
+    nvim_build: "nvim-{{ nvim.builds[ansible_architecture] }}"
+
+- name: Download Neovim
+  become: true
+  ansible.builtin.unarchive:
+    src: "https://github.com/neovim/neovim/releases/download/stable/{{ nvim_build }}.tar.gz"
+    dest: /opt
+    remote_src: yes
+  register: download
+
+- name: Add Neovim to path
+  become: true
+  ansible.builtin.file:
+    state: link
+    src: "{{ download.dest }}/{{ nvim_build }}/bin/nvim"
+    dest: /usr/local/bin/nvim
+
+- name: Install Neovim plugins
+  ansible.builtin.shell: nvim --headless +PlugUpdate +qa

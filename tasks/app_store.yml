@@ -1,7 +1,7 @@
 ---
 
 - name: Open App Store
-  ansible.builtin.shell: open "/System/Applications/App Store.app" 
+  ansible.builtin.shell: open "/System/Applications/App Store.app"
 
 - name: Install App store apps
   ansible.builtin.shell: mas install "{{ item }}"
