@@ -15,7 +15,7 @@ bootstrap_linux() {
 bootstrap_mac() {
   sudo --validate
   xcode-select --install || echo "Skipped installation for command line tools."
-  /usr/sbin/softwareupdate --install-rosetta
+  /usr/sbin/softwareupdate --install-rosetta --agree-to-license
   NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
   brew install ansible
