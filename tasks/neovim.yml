@@ -10,7 +10,7 @@
 - name: Download Neovim
   become: true
   ansible.builtin.unarchive:
-    src: "https://github.com/neovim/neovim/releases/download/stable/{{ nvim_build }}.tar.gz"
+    src: "https://github.com/neovim/neovim/releases/download/{{ nvim.version }}/{{ nvim_build }}.tar.gz"
     dest: /opt
     remote_src: yes
   register: download

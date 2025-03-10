@@ -1,5 +1,6 @@
 ---
 
 nvim:
+  version: nightly
   arch:
     aarch64: arm64
