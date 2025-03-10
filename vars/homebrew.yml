@@ -2,15 +2,14 @@
 
 homebrew:
   casks:
-    - authy
     - epic-games
     - firefox-developer-edition
     - flux
     - font-iosevka-nerd-font
+    - ghostty
     - gog-galaxy
     - iina
-    - iterm2
-    - kitty
+    - librewolf
     - mpv
     - signal
     - spotify
@@ -40,9 +39,3 @@ homebrew:
     - neovim
     - ripgrep
     - stow
-
-  taps:
-    - homebrew/cask
-    - homebrew/cask-fonts
-    - homebrew/cask-versions
-    - homebrew/core
