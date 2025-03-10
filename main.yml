@@ -26,7 +26,7 @@
     - name: Execute Neovim tasks
       import_tasks: tasks/neovim.yml
       tags: ['neovim', 'nvim']
-      when: ansible_facts['os_family'] == "Debian"
+      when: ansible_distribution != "MacOSX"
 
     - name: Execute mise tasks
       import_tasks: tasks/mise.yml
