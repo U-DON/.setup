@@ -14,11 +14,9 @@ plugins=(
   asdf
   direnv
   docker
-  fd
   fzf
   git
   kubectl
-  ripgrep
   zsh-autosuggestions
   zsh-syntax-highlighting
 )
@@ -29,18 +27,17 @@ alias rg='rg -S'
 
 export BAT_THEME='OneHalfDark'
 export GPG_TTY=$TTY
+
 export VISUAL='nvim'
 export EDITOR=$VISUAL
-
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
-
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 
 export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
   end-of-line
   vi-end-of-line
   vi-add-eol
 )
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370"
 
 export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
   forward-char
@@ -55,12 +52,10 @@ export ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS=(
   vi-find-next-char-skip
 )
 
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+
 # Load local configuration.
 [ -s ~/.zshrc.local ] && . ~/.zshrc.local
-
-[ -s ~/.asdf/plugins/dotnet/set-dotnet-env.zsh ] && . ~/.asdf/plugins/dotnet/set-dotnet-env.zsh
-
-[ -s ~/.asdf/plugins/java/set-java-home.zsh ] && . ~/.asdf/plugins/java/set-java-home.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
