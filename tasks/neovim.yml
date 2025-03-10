@@ -5,7 +5,7 @@
 
 - name: Set Neovim build
   ansible.builtin.set_fact:
-    nvim_build: "nvim-{{ nvim.builds[ansible_architecture] }}"
+    nvim_build: "nvim-linux-{{ nvim.arch[ansible_architecture] | default(ansible_architecture) }}"
 
 - name: Download Neovim
   become: true

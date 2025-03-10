@@ -11,7 +11,7 @@
 
 - name: Set delta (git-delta) build
   ansible.builtin.set_fact:
-    delta_build: "git-delta_{{ delta.version }}_{{ delta.builds[ansible_architecture] }}"
+    delta_build: "git-delta_{{ delta.version }}_{{ delta.arch[ansible_architecture] | default(ansible_architecture) }}"
 
 - name: Install delta (git-delta)
   become: true
