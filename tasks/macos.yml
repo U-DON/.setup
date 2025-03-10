@@ -1,11 +1,5 @@
 ---
 
-- name: Include macOS variables
-  ansible.builtin.include_vars: "vars/{{ item }}.yml"
-  with_items:
-    - homebrew
-    - mas
-
 - name: Execute Homebrew tasks
   import_tasks: homebrew.yml
   tags: ['homebrew', 'brew']

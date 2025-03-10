@@ -1,5 +1,8 @@
 ---
 
+- name: Include App Store variables
+  ansible.builtin.include_vars: vars/app_store.yml
+
 - name: Open App Store
   ansible.builtin.shell: open "/System/Applications/App Store.app"
 

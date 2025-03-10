@@ -1,5 +1,8 @@
 ---
 
+- name: Include Homebrew variables
+  ansible.builtin.include_vars: vars/homebrew.yml
+
 - name: Get Homebrew install path
   ansible.builtin.shell: brew --prefix
   register: brew_prefix
