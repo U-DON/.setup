@@ -1,0 +1,6 @@
+font-family = IosevkaTerm Nerd Font
+font-size = 14
+macos-icon = paper
+shell-integration-features = sudo
+window-padding-color = extend
+window-padding-x = 4
