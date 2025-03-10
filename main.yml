@@ -28,9 +28,9 @@
       tags: ['neovim', 'nvim']
       when: ansible_facts['os_family'] == "Debian"
 
-    - name: Execute asdf tasks
-      import_tasks: tasks/asdf.yml
-      tags: ['asdf']
+    - name: Execute mise tasks
+      import_tasks: tasks/mise.yml
+      tags: ['mise']
 
     - name: Execute scm_breeze tasks
       import_tasks: tasks/scm_breeze.yml

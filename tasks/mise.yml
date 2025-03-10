@@ -1,0 +1,4 @@
+---
+
+- name: Install mise
+  ansible.builtin.shell: curl https://mise.run | sh

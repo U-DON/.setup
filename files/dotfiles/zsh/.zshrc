@@ -60,4 +60,6 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+eval "$(~/.local/bin/mise activate zsh)"
+
 [ -s "$HOME/.scm_breeze/scm_breeze.sh" ] && source "$HOME/.scm_breeze/scm_breeze.sh"
