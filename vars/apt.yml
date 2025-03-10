@@ -9,3 +9,9 @@ apt:
     - httpie
     - ripgrep
     - stow
+
+delta:
+  version: 0.18.2
+  builds:
+    aarch64: arm64
+    x86_64: amd64

@@ -1,8 +1,5 @@
 ---
 
-- name: Include apt variables
-  ansible.builtin.include_vars: vars/apt.yml
-
 - name: Execute apt tasks
   import_tasks: apt.yml
   tags: ['apt']
