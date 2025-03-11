@@ -253,17 +253,16 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require('lspconfig')
 
 local servers = {
-  'eslint',                 -- ESLint
-  'html',                   -- HTML
-  'jdtls',                  -- Java
-  'jsonls',                 -- JSON
-  'kotlin_language_server', -- Kotlin
-  'omnisharp',              -- C#
-  'pyright',                -- Python
-  'solargraph',             -- Ruby
-  'terraformls',            -- Terraform
-  'tflint',                 -- tflint
-  'tsserver'                -- JavaScript / TypeScript
+  'eslint',      -- ESLint
+  'html',        -- HTML
+  'jdtls',       -- Java
+  'jsonls',      -- JSON
+  'omnisharp',   -- C#
+  'pyright',     -- Python
+  'ruby_lsp',    -- Ruby
+  'terraformls', -- Terraform
+  'tflint',      -- tflint
+  'tsserver'     -- JavaScript / TypeScript
 }
 
 for _, lsp in ipairs(servers) do
@@ -272,18 +271,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
--- lspconfig.kotlin_language_server.setup {
---   settings = {
---     kotlin = {
---       compiler = {
---         jvm = {
---           target = '17'
---         }
---       }
---     }
---   }
--- }
 
 local cmp = require('cmp')
 
