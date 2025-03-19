@@ -9,6 +9,7 @@ apt:
     - httpie
     - ripgrep
     - stow
+    - zsh
 
 delta:
   version: 0.18.2
