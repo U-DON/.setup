@@ -31,6 +31,8 @@ export GPG_TTY=$TTY
 export VISUAL='nvim'
 export EDITOR=$VISUAL
 
+export GOPATH="$HOME/.go"
+
 export ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=(
   end-of-line
   vi-end-of-line

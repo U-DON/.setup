@@ -254,6 +254,7 @@ local lspconfig = require('lspconfig')
 
 local servers = {
   'eslint',      -- ESLint
+  'gopls',       -- Go
   'html',        -- HTML
   'jdtls',       -- Java
   'jsonls',      -- JSON
