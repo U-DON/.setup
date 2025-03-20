@@ -262,7 +262,7 @@ local servers = {
   'ruby_lsp',    -- Ruby
   'terraformls', -- Terraform
   'tflint',      -- tflint
-  'tsserver'     -- JavaScript / TypeScript
+  'ts_ls'        -- JavaScript / TypeScript
 }
 
 for _, lsp in ipairs(servers) do
