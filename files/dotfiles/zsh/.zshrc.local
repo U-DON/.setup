@@ -1,7 +1,16 @@
-# Prefer GNU variants of standard Unix commands.
-export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:$MANPATH"
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+# ------- #
+# Exports #
+# ------- #
 
-alias ls='ls --color -G'
-alias bat='bat'
+# Prefer GNU variants of standard Unix commands on macOS.
+# export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
+# export MANPATH="$(brew --prefix)/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+# ======= #
+# Aliases #
+# ======= #
+
+# Alias `bat` on Debian due to conflict with another package named `bat`.
+# alias bat='batcat'
