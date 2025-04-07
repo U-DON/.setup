@@ -7,12 +7,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin()
+" Plug 'cedarbaum/fugitive-azure-devops.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'shumphrey/fugitive-gitlab.vim'
+" Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-sensible'
@@ -114,7 +115,9 @@ let g:airline_theme = 'onedark'
 " | fugitive.vim |
 " ----------------
 
-let g:fugitive_gitlab_domains = ['https://git.bhei.com']
+" let g:fugitive_azure_devops_baseurl = ''
+" let g:fugitive_gitlab_domains = []
+" let g:github_enterprise_urls = []
 
 " ===================
 " | VIM / NVIM CONF |
