@@ -21,6 +21,3 @@
     state: link
     src: "{{ download.dest }}/{{ nvim_build }}/bin/nvim"
     dest: /usr/local/bin/nvim
-
-- name: Install Neovim plugins
-  ansible.builtin.shell: nvim --headless +PlugUpdate +qa
