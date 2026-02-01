@@ -3,3 +3,11 @@
 - name: Execute apt tasks
   import_tasks: apt.yml
   tags: ['apt']
+
+- name: Download fzf
+  ansible.builtin.git:
+    repo: https://github.com/junegunn/fzf.vim
+    dest: ~/.fzf
+
+- name: Install fzf
+  ansible.builtin.shell: ~/.fzf/install
