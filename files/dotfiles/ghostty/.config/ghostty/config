@@ -1,6 +1,6 @@
 font-family = IosevkaTerm Nerd Font Mono
 font-size = 14
-macos-icon = paper
+macos-icon = official
 shell-integration-features = sudo
 theme = One Half Dark
 window-padding-color = extend
