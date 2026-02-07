@@ -1,6 +1,7 @@
 return {
   -- Vim
 
+  ''
   'joshdick/onedark.vim',
 
   {
@@ -155,6 +156,16 @@ return {
       'neovim/nvim-lspconfig',
     },
     opts = { automatic_installation = true },
+  },
+
+  {
+    'olimorris/codecompanion.nvim',
+    version = '^18.0.0',
+    opts = {},
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+    },
   },
 
   {
