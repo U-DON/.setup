@@ -1,15 +1,8 @@
 return {
   -- Vim
 
-  ''
+  'github/copilot.vim',
   'joshdick/onedark.vim',
-
-  {
-    'junegunn/fzf',
-    dir = '~/.fzf',
-    build = './install all',
-  },
-
   'junegunn/fzf.vim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
