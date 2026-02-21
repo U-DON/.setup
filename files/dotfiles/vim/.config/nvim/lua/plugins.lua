@@ -72,10 +72,9 @@ return {
     end
   },
 
-  'kyazdani42/nvim-web-devicons',
-
   {
     'kyazdani42/nvim-tree.lua',
+    dependencies = { 'kyazdani42/nvim-web-devicons' },
     opts = {
       view = { preserve_window_proportions = true },
     },
@@ -148,7 +147,6 @@ return {
       { 'mason-org/mason.nvim', opts = {} },
       'neovim/nvim-lspconfig',
     },
-    opts = { automatic_installation = true },
   },
 
   {
