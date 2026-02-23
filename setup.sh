@@ -37,6 +37,11 @@ bootstrap_mac() {
   NONINTERACTIVE=1 /bin/bash -c \
     "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+  touch ~/.zprofile
+
+  grep -qF 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' ~/.zprofile \
+    || echo 'eval "$(/opt/homebrew/bin/brew shellenv zsh)"' >> ~/.zprofile
+
   eval "$(/opt/homebrew/bin/brew shellenv)"
 
   echo "Installing Ansible..."
