@@ -1,7 +1,7 @@
 font-family = IosevkaTerm Nerd Font Mono
 font-size = 14
 macos-icon = official
-shell-integration-features = ssh-terminfo sudo
+shell-integration-features = ssh-terminfo, sudo
 theme = One Half Dark
 window-padding-color = extend
 window-padding-x = 4
