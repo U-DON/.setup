@@ -3,6 +3,7 @@ return {
 
   'github/copilot.vim',
   'joshdick/onedark.vim',
+  'junegunn/fzf',
   'junegunn/fzf.vim',
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
