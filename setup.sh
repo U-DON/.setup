@@ -29,7 +29,7 @@ bootstrap_mac() {
   xcode-select --install || echo "Skipped installation for command line tools."
 
   echo "Installing Rosetta..."
-  /usr/sbin/softwareupdate \
+  softwareupdate \
     --install-rosetta \
     --agree-to-license
 

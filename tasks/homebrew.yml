@@ -10,6 +10,7 @@
 - name: Install Homebrew formulae
   community.general.homebrew:
     name: "{{ homebrew.formulae }}"
+    state: latest
 
 - name: Install Homebrew casks
   community.general.homebrew_cask:
